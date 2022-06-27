@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import { getMapsOptimizers, getMapsScripts } from "wa-map-optimizer-vite";
-import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill'
+import polyfillNode from 'rollup-plugin-polyfill-node';
 
 export default defineConfig({
     base: "./",
@@ -14,9 +14,7 @@ export default defineConfig({
     },
     plugins: [
         ...getMapsOptimizers(), 
-        NodeGlobalsPolyfillPlugin({
-            buffer: true
-        })
+        polyfillNode()
     ],
     server: {
         host: "localhost",
