@@ -1,7 +1,7 @@
 /// <reference types="@workadventure/iframe-api-typings" />
 
 import { bootstrapExtra } from "@workadventure/scripting-api-extra";
-import { createEvent, connect, nameForServiceSpecificTopic, nameForSharedTopic, smartHomeEventBuilder, platformEventsEventBuilder } from 'enstadtpfaff-platform-mock-api';
+import { createEvent, connect, nameForServiceSpecificTopic } from 'enstadtpfaff-platform-mock-api';
 
 console.log('Script started successfully');
 
