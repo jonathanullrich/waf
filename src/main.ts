@@ -1,17 +1,11 @@
 /// <reference types="@workadventure/iframe-api-typings" />
 
 import { bootstrapExtra } from "@workadventure/scripting-api-extra";
-import { createEvent, connect, nameForServiceSpecificTopic } from 'enstadtpfaff-platform-mock-api';
+import { connect } from 'enstadtpfaff-platform-mock-api';
 
 console.log('Script started successfully');
 
 let currentPopup: any = undefined;
-
-// You can fill in default config here
-// But we invite you to not hard code config
-// Embrace env vars
-// Further reading about good practices regarding cloud native applications:
-// https://12factor.net/
 
 const DEFAULT_MQTT_ADDRESS = "ssl://broker.platform.pfaffhack.de:8883";
 const DEFAULT_MQTT_USERNAME = "pfaffhack2021";
@@ -36,17 +30,17 @@ WA.onInit().then(() => {
     console.log('Player tags: ',WA.player.tags)
 
     WA.chat.sendChatMessage('Hello world', 'Mr Robot');
-    WA.chat.onChatMessage((message => {
-        // publish an Event using the provided EventBuilder for custom Events
-        eventBroker.publish(
-            createEvent(
-                // utility function helps you in forming valid topic named that comply to Topic Management
-                nameForServiceSpecificTopic('Workadventure'),
-                // The Payload is a string or will be serialized using JSON.stringify
-                message
-            )
-        );
-    }));
+    // WA.chat.onChatMessage((message => {
+    //     // publish an Event using the provided EventBuilder for custom Events
+    //     eventBroker.publish(
+    //         createEvent(
+    //             // utility function helps you in forming valid topic named that comply to Topic Management
+    //             nameForServiceSpecificTopic('Workadventure'),
+    //             // The Payload is a string or will be serialized using JSON.stringify
+    //             message
+    //         )
+    //     );
+    // }));
 
     WA.room.onEnterLayer('clockZone').subscribe(() => {
         const today = new Date();
