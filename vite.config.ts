@@ -1,6 +1,5 @@
 import { defineConfig } from "vite";
 import { getMapsOptimizers, getMapsScripts } from "wa-map-optimizer-vite";
-import polyfillNode from 'rollup-plugin-polyfill-node';
 
 export default defineConfig({
     base: "./",
@@ -13,8 +12,7 @@ export default defineConfig({
         },
     },
     plugins: [
-        ...getMapsOptimizers(), 
-        polyfillNode()
+        ...getMapsOptimizers()
     ],
     server: {
         host: "localhost",
